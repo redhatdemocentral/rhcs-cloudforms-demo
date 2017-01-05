@@ -45,7 +45,7 @@ installations. To stop and start instead of re-running the install script, use:
 
 Supporting Articles
 -------------------
-- [3 Steps to Cloud Operations Happiness (coming soon)]()
+- [3 Steps to Cloud Operations Happiness with CloudForms](http://www.schabell.org/2017/01/3-steps-to-cloud-operations-happiness-with-cloudforms.html)
 
 
 Released versions
