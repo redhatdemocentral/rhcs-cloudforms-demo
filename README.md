@@ -42,7 +42,7 @@ installations. To stop and start instead of re-running the install script, use:
 
 Supporting Articles
 -------------------
-- [3 Steps to Cloud Operational Happiness with Red Hat CloudForms](http://www.schabell.org/2016/11/3-steps-to-cloud-happiness-with-ocp.html)
+- [3 Steps to Cloud Operations Happiness (coming soon)]()
 
 
 Released versions
