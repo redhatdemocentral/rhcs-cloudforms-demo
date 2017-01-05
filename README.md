@@ -17,18 +17,18 @@ Install on your machine
 Notes
 -----
 Before the log in interface to CloudForms will be available, it takes around 5-10 minutes to populate the containers database. When
-it is done, log in to CloudForms web interface at [https://localhost](https://localhost) with one of the below users:
+it is done, log in to CloudForms web interface with one of the below users:
+
+   - [https://localhost](https://localhost)
 
 ```
-   [https://localhost](https://localhost)
-     Admin user: admin
-     Admin pass: smartvm
-
-   [https://localhost](https://localhost)
-     Operations user: cloudops
-     Operations pass: Redhat1!
+     Admin user: admin           Operations user: cloudops
+     Admin pass: smartvm         Operations pass: Redhat1!
+```
    
-   [https://localhost/self_service](https://localhost/self_service)
+  - [https://localhost/self_service](https://localhost/self_service)
+
+```
      Customer user: clouduser
      Customer pass: Redhat1!
 ```
