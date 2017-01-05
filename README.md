@@ -20,14 +20,17 @@ Before the log in interface to CloudForms will be available, it takes around 5-1
 it is done, log in to CloudForms web interface at [https://localhost](https://localhost) with one of the below users:
 
 ```
-   Admin user: admin
-   Admin pass: smartvm
+   [https://localhost](https://localhost)
+     Admin user: admin
+     Admin pass: smartvm
 
-   Operations user: cloudops
-   Operations pass: Redhat1!
-
-   Customer user: clouduser
-   Customer pass: Redhat1!
+   [https://localhost](https://localhost)
+     Operations user: cloudops
+     Operations pass: Redhat1!
+   
+   [https://localhost/self_service](https://localhost/self_service)
+     Customer user: clouduser
+     Customer pass: Redhat1!
 ```
 
 This project has an install script that is setup to allow you to re-run it without worrying about previous
