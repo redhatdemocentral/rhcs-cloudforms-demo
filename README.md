@@ -1,5 +1,5 @@
-Red Hat Cloud Suite CloudForms Install Demo
-===========================================
+Red Hat CloudForms Install Demo
+===============================
 Install your very own local instance of the Red Hat CloudForms product, the management tool of choice for Red Hat Cloud Suite infrastructure solutions.
 
 This project requires a docker engine and some patience for the database to be populated after starting up the containerized CloudForms instance. There will be checks during installation and I point you to what is missing. It also checks that you have the right versions running too.
@@ -54,4 +54,6 @@ See the tagged releases for the following versions of the product:
 ![CF Login](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/cf-login.png?raw=true)
 
 ![CF Mgmt](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/cf-cloud-intel.png?raw=true)
+
+![Cloud Suite](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/rhcs-arch.png?raw=true)
 
