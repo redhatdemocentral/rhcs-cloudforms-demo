@@ -17,7 +17,7 @@ Install on your machine
 Notes
 -----
 Before the log in interface to CloudForms will be available, it takes around 5-10 minutes to populate the containers database. When
-it is done, log in to CloudForms web interface at https://localhost with one of the below users:
+it is done, log in to CloudForms web interface at [https://localhost](https://localhost) with one of the below users:
 
 ```
    Admin user: admin
