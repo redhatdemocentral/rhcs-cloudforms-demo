@@ -56,7 +56,7 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
-- v1.1 - Red Hat CloudForms 4.5 containerized and running locally, leverages Red Hat Container Registry.
+- v1.1 - Red Hat CloudForms 4.5 containerized and running on any OpenShift Container Platform installation.
 
 - v1.0 - Red Hat CloudForms 4.2 containerized and running locally.
 
