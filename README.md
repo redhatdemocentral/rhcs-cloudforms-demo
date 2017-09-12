@@ -1,13 +1,10 @@
 Red Hat CloudForms Install Demo
 ===============================
-Install your very own local instance of the Red Hat CloudForms product, the management tool of choice for Red Hat Cloud Suite infrastructure solutions. The CloudForms container 
-
-This project requires a docker engine and some patience for the database to be populated after starting up the containerized CloudForms instance. There will be checks during installation and I point you to what is missing. It also checks that you have the right versions running too.
+Install your very own local instance of the Red Hat CloudForms product, the management tool of choice for Red Hat Cloud Suite infrastructure solutions. 
 
 
 Install on your machine
 -----------------------
-----------------------------------
 1. First ensure you have an OpenShift container based installation, such as one of the followling installed first:
 
   - [OCP Install Demo](https://github.com/redhatdemocentral/ocp-install-demo)
