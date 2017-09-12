@@ -29,7 +29,22 @@ Install on your machine
 
 Notes
 -----
-None.
+Before the log in interface to CloudForms will be available, it takes around 5-10 minutes to populate the containers database. When
+it is done, log in to CloudForms web interface (where YOUR-HOST-IP is generated during the installation):
+
+   - http://cloudforms-cloudforms.YOUR-HOST-IP.nip.io
+
+```
+     username: admin
+     password: smartvm
+```
+   
+   - http://cloudforms-cloudforms.YOUR-HOST-IP.nip.io/self_service
+
+```
+     username: admin
+     password: smartvm
+```
 
 
 Supporting Articles
@@ -41,7 +56,7 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
-- v1.1 - Red Hat CloudForms 4.2 containerized and running locally, leverages Red Hat Container Registry.
+- v1.1 - Red Hat CloudForms 4.5 containerized and running locally, leverages Red Hat Container Registry.
 
 - v1.0 - Red Hat CloudForms 4.2 containerized and running locally.
 

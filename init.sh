@@ -12,9 +12,7 @@ OPENSHIFT_USER=admin
 OPENSHIFT_PWD=admin
 HOST_IP=yourhost.com
 OCP_PRJ=cloudforms
-OCP_APP=rhcs-cloudforms-demo
-OCP_APP_MEM=rhcs-cloudforms-memcache
-OCP_APP_STORAGE=rhcs-cloudforms-postgresql
+CF_IMAGE_TEMPLATE="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.6/cfme-templates/cfme-template.yaml"
 
 # prints the documentation for this script.
 function print_docs() 
@@ -128,29 +126,35 @@ if [ "$?" -ne "0" ]; then
 fi
 
 echo
-echo "Setting up service account for CloudForms..."
-echo
-oc create serviceaccount cfsa -n $OCP_PRJ
-
-echo
-echo "Setting policy for service account to run CloudForms..."
+echo "Adding policy for service account to run CloudForms..."
 echo 
-oc adm policy add-scc-to-user privileged system:serviceaccount:$OCP_PRJ:cfsa
+oc adm policy add-scc-to-user anyuid system:serviceaccount:cloudforms:cfme-anyuid
 
 if [ "$?" -ne "0" ]; then
 	echo
-	echo "Error occurred during setting policy for service account!"
+	echo "Error occurred during adding policy for service account!"
 	exit
 fi
 
 echo
-echo "Setting policy for admin user to cluster-admin..."
+echo "Setting policy privileges for running CloudForms..."
 echo 
-oc adm policy add-cluster-role-to-user cluster-admin admin
+oc adm policy add-scc-to-user privileged system:serviceaccount:cloudforms:default
 
 if [ "$?" -ne "0" ]; then
 	echo
-	echo "Error occurred during setting policy admin user to cluster-admin!"
+	echo "Error occurred during setting policy privileges for service account!"
+	exit
+fi
+
+echo 
+echo "Importing CloudForms image template..."
+echo 
+oc create -f $CF_IMAGE_TEMPLATE -n openshift
+
+if [ "$?" -ne "0" ]; then
+	echo
+	echo "Error occurred during importing CloudForms image template!"
 	exit
 fi
 
@@ -166,50 +170,14 @@ if [ "$?" -ne "0" ]; then
 fi
 
 echo
-echo "Setting up CF memcache..."
+echo "Installing CloudForms..."
 echo
-oc delete bc "$OCP_APP_MEM" -n "$OCP_PRJ" >/dev/null 2>&1
-oc delete imagestreams "$OCP_APP_MEM" >/dev/null 2>&1
-oc delete services "$OCP_APP_MEM" >/dev/null 2>&1
-oc new-app registry.access.redhat.com/cloudforms45/cfme-openshift-memcached --name=$OCP_APP_MEM
+
+oc new-app -p=APPLICATION_MEM_REQ=3072Mi --template=$OCP_PRJ
 						
 if [ "$?" -ne "0" ]; then
 	echo
-	echo "Error occurred during setup CF memcache!"
-	exit
-fi
-
-# need to wait a bit for new app to deploy.
-sleep 10 
-
-echo
-echo "Setting up CF storage..."
-echo
-oc delete bc "$OCP_APP_STORAGE" -n "$OCP_PRJ" >/dev/null 2>&1
-oc delete imagestreams "$OCP_APP_STORAGE" >/dev/null 2>&1
-oc delete services "$OCP_APP_STORAGE" >/dev/null 2>&1
-oc new-app registry.access.redhat.com/cloudforms45/cfme-openshift-postgresql --name=$OCP_APP_STORAGE
-						
-if [ "$?" -ne "0" ]; then
-	echo
-	echo "Error occurred during setup CF storage!"
-	exit
-fi
-
-# need to wait a bit for new app to deploy.
-sleep 10 
-
-echo
-echo "Setting up CloudForms application..."
-echo
-oc delete bc "$OCP_APP" -n "$OCP_PRJ" >/dev/null 2>&1
-oc delete imagestreams "$OCP_APP" >/dev/null 2>&1
-oc delete services "$OCP_APP" >/dev/null 2>&1
-oc new-app registry.access.redhat.com/cloudforms45/cfme-openshift-app --name=$OCP_APP
-						
-if [ "$?" -ne "0" ]; then
-	echo
-	echo "Error occurred during setup CloudForms application!"
+	echo "Error occurred during install of CloudForms!"
 	exit
 fi
 
@@ -220,22 +188,19 @@ echo "= CloudForms management engine.                                ="
 echo "=                                                              ="
 echo "= The CloudForms log in is accessible via web at:              ="
 echo "=                                                              ="
-echo "=  https://rhcs-cloudforms-demo-cloudforms.nip.io              ="
+echo "=  https://cloudforms-cloudforms.$HOST_IP.nip.io     ="
 echo "=                                                              ="
 echo "=  Log in as:                                                  ="
 echo "=                                                              ="
-echo "=    Admin user: admin                                         ="
+echo "=      username: admin                                         ="
 echo "=      password: smartvm                                       ="
-echo "=                                                              ="
-echo "=    Operations user: cloudops                                 ="
-echo "=           password: Redhat1!                                 ="
 echo "=                                                              ="
 echo "=  Self service login at:                                      ="
 echo "=                                                              ="
-echo "=  https://rhcs-cloudforms-demo-cloudforms.nip.io/self_service ="
+echo "=  https://cloudforms-cloudforms.$HOST_IP.nip.io/self_service  ="
 echo "=                                                              ="
-echo "=    Customer user: clouduser                                  ="
-echo "=         password: Redhat1!                                   ="
+echo "=      username: admin                                         ="
+echo "=      password: smartvm                                       ="
 echo "=                                                              ="
 echo "================================================================"
 echo
