@@ -152,12 +152,6 @@ echo "Importing CloudForms image template..."
 echo 
 oc create -f $CF_IMAGE_TEMPLATE -n openshift
 
-if [ "$?" -ne "0" ]; then
-	echo
-	echo "Error occurred during importing CloudForms image template!"
-	exit
-fi
-
 echo
 echo "Logging in to OpenShift as $OPENSHIFT_USER..."
 echo
@@ -201,6 +195,10 @@ echo "=  https://cloudforms-cloudforms.$HOST_IP.nip.io/self_service  ="
 echo "=                                                              ="
 echo "=      username: admin                                         ="
 echo "=      password: smartvm                                       ="
+echo "=                                                              ="
+echo "=  Note: it will take a few mintues for CloudForms to become   ="
+echo "=  fully available, so login to Openshift connsole and watch   ="
+echo "=  the deployments spin up.                                    ="
 echo "=                                                              ="
 echo "================================================================"
 echo
