@@ -125,6 +125,28 @@ if [ "$?" -ne "0" ]; then
 	exit
 fi
 
+echo 
+echo "Creating service account for CloudForms..."
+echo 
+oc create serviceaccount cfme -n $OCP_PRJ
+
+if [ "$?" -ne "0" ]; then
+	echo
+	echo "Error occurred creating service account for CloudForms!"
+	exit
+fi
+
+echo 
+echo "Granting service account cluster-admin access to CloudForms..."
+echo
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:cloudforms:cfme
+
+if [ "$?" -ne "0" ]; then
+	echo
+	echo "Error occurred granting service account cluster-admin access!"
+	exit
+fi
+
 echo
 echo "Adding policy for service account to run CloudForms..."
 echo 

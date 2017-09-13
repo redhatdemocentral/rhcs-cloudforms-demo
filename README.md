@@ -43,9 +43,46 @@ it is done, log in to CloudForms web interface (where YOUR-HOST-IP is generated 
      password: smartvm
 ```
 
+How to add a container provider to start collecting metrics:
+
+1. Log in to CloudForms console.
+
+2. Hover on menu items COMPUTE -> CONTAINERS -> PROVIDERS (click on this last one only to open).
+
+3. Click on CONFIGURATION menu at top to select ADD EXISTING CONTAINERS PROVIDER.
+
+4. Fill in the form as follows:
+
+```
+   Name: OCP
+   Type: OpenShift Container Platform
+   Zone: default
+
+   Default Endpoint:
+
+     Secuirty Protocol: SSL without validation
+     Hostname         : kubernetes.default
+     API Port         : 443
+     Token            : (see command output below)
+     Confirm Token    : (see command output below)
+```
+
+To lookup the token us the OpenShift CLI tool 'oc' from a terminal window:
+
+``` 
+   $ oc login OCP_HOST_IP:8443 -u system:admin
+
+   $ oc serviceaccounts get-token cfme -n cloudforms
+```
+
+Paste the token output into the fields mentioned above to complete the form and click on VALIDATE button. Once successful click on
+ADD button. An OCP container provider should appear and given time presents data as shown in image below.
+
 
 Supporting Articles
 -------------------
+- [Zero to Cloud Operations on OpenShift in minutes](http://www.schabell.org/2017/09/zero-to-cloud-ops-on-openshift-in-minutes.html)
+
 - [3 Steps to Cloud Operations Happiness with CloudForms](http://www.schabell.org/2017/01/3-steps-to-cloud-operations-happiness-with-cloudforms.html)
 
 
@@ -59,7 +96,9 @@ See the tagged releases for the following versions of the product:
 
 ![CF Login](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/cf-login.png?raw=true)
 
-![CF Mgmt](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/cf-cloud-intel.png?raw=true)
+![CF Provider Form](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/cf-add-provider.png?raw=true)
+
+![CF Provider](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/cf-container-provider.png?raw=true)
 
 ![Cloud Suite](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/blob/master/docs/demo-images/rhcs-arch.png?raw=true)
 
