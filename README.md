@@ -13,7 +13,7 @@ Install on your machine
 
 2. [Download and unzip.](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/archive/master.zip)
 
-3. Run 'init.sh': 
+3. Run 'init.sh' or 'init.bat' file. 'init.bat' must be run with Administrative privileges:
 ```
    # The installation needs to be pointed to a running version
    # of OpenShift, so pass an IP address such as:
