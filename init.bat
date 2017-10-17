@@ -1,5 +1,5 @@
 @ECHO OFF
-setlocal
+setlocal enableDelayedExpansion
 
 set PROJECT_HOME=%~dp0
 set AUTHORS=Michael Surbey, Eric D. Schabell
@@ -117,7 +117,7 @@ if not "%ERRORLEVEL%" == "0" (
 echo. 
 echo Granting service account cluster-admin access to CloudForms...
 echo.
-call oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:cloudforms:cfme
+call oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:%OCP_PRJ%:cfme
 
 if not "%ERRORLEVEL%" == "0" (
   echo.
@@ -129,7 +129,7 @@ if not "%ERRORLEVEL%" == "0" (
 echo.
 echo Adding policy for service account to run CloudForms...
 echo. 
-call oc adm policy add-scc-to-user anyuid system:serviceaccount:cloudforms:cfme-anyuid
+call oc adm policy add-scc-to-user anyuid system:serviceaccount:%OCP_PRJ%:cfme-anyuid
 
 if not "%ERRORLEVEL%" == "0" (
   echo.
@@ -141,7 +141,7 @@ if not "%ERRORLEVEL%" == "0" (
 echo.
 echo Setting policy privileges for running CloudForms...
 echo. 
-call oc adm policy add-scc-to-user privileged system:serviceaccount:cloudforms:default
+call oc adm policy add-scc-to-user privileged system:serviceaccount:%OCP_PRJ%:default
 
 if not "%ERRORLEVEL%" == "0" (
   echo.
@@ -150,9 +150,9 @@ if not "%ERRORLEVEL%" == "0" (
 	GOTO :EOF
 )
 
-echo
+echo.
 echo Importing CloudForms image template...
-echo
+echo.
 call oc create -f %CF_IMAGE_TEMPLATE% -n openshift
 
 echo.
