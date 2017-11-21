@@ -9,6 +9,8 @@ Install on your machine
 
   - [OCP Install Demo](https://github.com/redhatdemocentral/ocp-install-demo)
 
+  - [Red Hat Container Development Kit (CDK) using Minishift](https://developers.redhat.com/products/cdk/overview)
+
   - or your own OpenShift installation.
 
 2. [Download and unzip.](https://github.com/redhatdemocentral/rhcs-cloudforms-demo/archive/master.zip)
@@ -89,6 +91,8 @@ Supporting Articles
 Released versions
 -----------------
 See the tagged releases for the following versions of the product:
+
+- v1.3 - Red Hat CloudForms 4.5 containerized and running on OpenShift Container Platform and available on CDK with Minishift.
 
 - v1.2 - Red Hat CloudForms 4.5 containerized and running on any OpenShift Container Platform installation, added windows installation support.
 

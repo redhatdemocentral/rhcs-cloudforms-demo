@@ -170,7 +170,7 @@ if not "%ERRORLEVEL%" == "0" (
 echo.
 echo Installing CloudForms...
 echo.
-call oc new-app -p=APPLICATION_MEM_REQ=3072Mi --template=%OCP_PRJ%
+call oc new-app -p=APPLICATION_MEM_REQ=3072Mi --template=%OCP_PRJ% -n %OCP_PRJ%
 						
 if not "%ERRORLEVEL%" == "0" (
 	echo.

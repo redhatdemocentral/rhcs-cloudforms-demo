@@ -189,7 +189,7 @@ echo
 echo "Installing CloudForms..."
 echo
 
-oc new-app -p=APPLICATION_MEM_REQ=3072Mi --template=$OCP_PRJ
+oc new-app -p=APPLICATION_MEM_REQ=3072Mi --template=$OCP_PRJ -n $OCP_PRJ
 						
 if [ "$?" -ne "0" ]; then
 	echo
