@@ -83,6 +83,8 @@ ADD button. An OCP container provider should appear and given time presents data
 
 Supporting Articles
 -------------------
+- [10 Steps to Cloud Happiness: Step 3 - Adding Cloud Operations](http://www.schabell.org/2017/10/10-steps-to-cloud-happiness-step-3.html)
+
 - [Zero to Cloud Operations on OpenShift in minutes](http://www.schabell.org/2017/09/zero-to-cloud-ops-on-openshift-in-minutes.html)
 
 - [3 Steps to Cloud Operations Happiness with CloudForms](http://www.schabell.org/2017/01/3-steps-to-cloud-operations-happiness-with-cloudforms.html)
