@@ -28,6 +28,19 @@ Install on your machine
 
 Notes
 -----
+
+Should your local network DNS not handle the resolution of the above address, giving you page not found errors, you can apply the
+following to your local hosts file:
+
+```
+$ sudo vi /etc/hosts
+
+# add host for OCP demo resulution
+192.168.99.100   cloudforms-cloudforms.192.168.99.100.nip.io 
+```
+
+-----
+
 Before the log in interface to CloudForms will be available, it takes around 5-10 minutes to populate the containers database. When
 it is done, log in to CloudForms web interface (where YOUR-HOST-IP is generated during the installation):
 
@@ -44,6 +57,8 @@ it is done, log in to CloudForms web interface (where YOUR-HOST-IP is generated 
      username: admin
      password: smartvm
 ```
+
+-----
 
 How to add a container provider to start collecting metrics:
 
