@@ -1,3 +1,6 @@
+Update: June 2018 moved to [Gitlab](https://gitlab.com/redhatdemocentral/rhcs-cloudforms-demo).
+
+
 Red Hat CloudForms Install Demo
 ===============================
 Install your very own local instance of the Red Hat CloudForms product, the management tool of choice for Red Hat Cloud Suite infrastructure solutions. 
